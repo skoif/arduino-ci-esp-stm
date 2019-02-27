@@ -65,8 +65,8 @@ RUN chmod +x ${A_TOOLS_DIR}/* && \
     mkdir ${A_HOME}/Arduino/tools
 
 # Install additional Arduino boards and libraries
-RUN arduino_add_board_url boardsmanager.additional.urls=http://arduino.esp8266.com/stable/package_esp8266com_index.json,http://dan.drown.org/stm32duino/package_STM32duino_index.json && \
-    arduino_install_board esp8266:esp8266 && \
-    arduino_install_board stm32duino:STM32F4xx boards && \
-    arduino --pref "compiler.warning_level=all" --save-prefs 2>&1
+RUN arduino_add_board_url boardsmanager.additional.urls=http://arduino.esp8266.com/stable/package_esp8266com_index.json,http://dan.drown.org/stm32duino/package_STM32duino_index.json
+RUN arduino_install_board esp8266:esp8266
+RUN arduino_install_board stm32duino:STM32F4xx boards
+RUN arduino --pref "compiler.warning_level=all" --save-prefs
 
